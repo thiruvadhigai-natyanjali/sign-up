@@ -1,7 +1,6 @@
 const myName = "Ashwin Balaji";
 const h1 = document.querySelector(".heading-primary");
 
-
 ///////////////////////////////////////////////////////////
 // Set current year
 const yearEl = document.querySelector(".year");
