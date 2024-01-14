@@ -260,6 +260,10 @@
     width: 80%;
   }
 
+  .event-img{
+    width: 80%;
+  }
+
   .logos img {
     height: 1.2rem;
   }
@@ -296,6 +300,16 @@
   .cta-img-box {
     height: 32rem;
     grid-row: 1;
+  }
+
+  .social-links{
+    justify-content: center;
+    padding-left: 0;
+  }
+
+  .copyright{
+    margin-top: 4rem;
+    padding-inline: 3rem;
   }
 }
 
