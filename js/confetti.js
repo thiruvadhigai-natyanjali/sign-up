@@ -1,6 +1,6 @@
 // CONFETTI
 
-window.onpaint = function () {
+window.onload = function () {
   // Globals
   var random = Math.random,
     cos = Math.cos,
