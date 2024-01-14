@@ -1,6 +1,6 @@
 // CONFETTI
 
-window.onload = function () {
+document.addEventListener("DOMContentLoaded", function () {
   // Globals
   var random = Math.random,
     cos = Math.cos,
@@ -247,4 +247,4 @@ window.onload = function () {
   }, confettiDuration);
 
   poof();
-};
+});
