@@ -311,6 +311,10 @@
     margin-top: 4rem;
     padding-inline: 3rem;
   }
+
+  #go-up-button{
+    display: none;
+  }
 }
 
 /* 

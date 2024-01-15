@@ -148,4 +148,24 @@ checkFlexGap();
 
 
 
+// Go up
+// Get the button element
+var btn = document.getElementById('go-up-button');
+
+// Add scroll event listener
+window.addEventListener('scroll', function() {
+  if (window.scrollY > 300) {
+    btn.classList.add('show');
+  } else {
+    btn.classList.remove('show');
+  }
+});
+
+// Add click event listener
+btn.addEventListener('click', function(e) {
+  e.preventDefault();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+
 

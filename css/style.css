@@ -916,5 +916,51 @@
 
 
 /*  */
-/* ---- reset ---- */
+/* ---- Go up btn ---- */
+#go-up-button {
+  display: inline-block;
+  background-color: #FF9800;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 4px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  transition: background-color .3s, 
+    opacity .5s, visibility .5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+}
+#go-up-button::after {
+  content: "\e5d8";
+  font-family: Material Icons;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 2em;
+  line-height: 50px;
+  color: var(--primary_color);
+}
+#go-up-button:hover {
+  cursor: pointer;
+  background-color: #333;
+}
+#go-up-button:active {
+  background-color: #555;
+}
+#go-up-button.show {
+  opacity: 1;
+  visibility: visible;
+}
 
+/* Styles for the content section */
+
+@media (min-width: 500px) {
+  .content {
+    width: 43%;
+  }
+  #go-up-button {
+    margin: 30px;
+  }
+}
