@@ -145,7 +145,7 @@
   font-size: 1.8rem;
   margin-top: -2.5rem;
   z-index: -1;
-  background-color: var(--sacred-saffron);
+  /* background-color: var(--sacred-saffron); */
   color: var(--forth_color);
   border: none;
   border-bottom-left-radius: 20px;
