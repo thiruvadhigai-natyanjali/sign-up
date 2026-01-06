@@ -89,7 +89,8 @@
   }
 
   .hero-img {
-    width: 60%;
+    width: 100%;
+    max-height: 100vh;
   }
 
   .delivered-meals {
@@ -308,9 +309,30 @@
   .hero {
     padding: 0 3.2rem;
   }
+  
+  /* Move image to top in mobile view */
+  .hero-img-box {
+    order: -1;
+  }
+  
+  /* Fix button spacing in mobile view */
+  .hero-text-box .btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .hero-text-box .btn:not(:last-of-type) {
+    margin-bottom: 1.6rem;
+  }
+  
+  .hero-text-box .margin-right-sm {
+    margin-right: 0 !important;
+  }
 
   .hero-img {
-    width: 80%;
+    width: 100%;
+    max-height: 100vh;
   }
 
   .event-img{

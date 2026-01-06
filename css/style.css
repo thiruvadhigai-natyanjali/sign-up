@@ -228,6 +228,17 @@
 
 .hero-img {
   width: 100%;
+  max-height: 100vh;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Pamphlet frame in hero section */
+.hero .pamphlet-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: auto;
 }
 
 .delivered-meals {
