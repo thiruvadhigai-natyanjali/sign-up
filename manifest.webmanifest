@@ -1,4 +1,12 @@
 {
+  "name": "Thiruvadhigai Natyanjali - Maha Shivratri Festival",
+  "short_name": "Natyanjali 2026",
+  "description": "Registration for Thiruvadhigai Natyanjali classical dance festival at Panruti Thiruvathigai Virattaneshwara Temple",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#234e70",
+  "theme_color": "#D4AF37",
+  "orientation": "portrait-primary",
   "icons": [
     { "src": "static/favicon.png", "type": "image/png", "sizes": "192x192" },
     { "src": "static/favicon.png", "type": "image/png", "sizes": "512x512" }

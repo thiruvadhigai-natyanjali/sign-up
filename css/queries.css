@@ -317,6 +317,75 @@
   }
 }
 
+/**************************/
+/* MOBILE ACCESSIBILITY ENHANCEMENTS */
+/**************************/
+
+/* Larger touch targets for mobile */
+@media (max-width: 44em) {
+  .btn,
+  .btn:link,
+  .btn:visited {
+    padding: 2rem 3.6rem;
+    font-size: 2.2rem;
+    min-height: 48px;
+    min-width: 48px;
+  }
+  
+  .main-nav-link:link,
+  .main-nav-link:visited {
+    padding: 1.2rem;
+    min-height: 44px;
+  }
+  
+  /* Location section mobile */
+  .location-content {
+    grid-template-columns: 1fr;
+    gap: 3.2rem;
+  }
+  
+  .map-container iframe {
+    height: 350px;
+  }
+}
+
+/* Enhanced focus visibility for accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--temple-gold);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 0.8rem rgba(212, 175, 55, 0.3);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .subheading {
+    color: var(--temple-gold);
+    font-weight: 700;
+  }
+  
+  .gallery-item {
+    border: 2px solid var(--primary_color);
+  }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .hero-img-box {
+    animation: none !important;
+  }
+}
+
 /* 
 - Font sizes (px)
 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98

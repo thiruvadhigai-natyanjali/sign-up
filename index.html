@@ -52,6 +52,14 @@
       rel="stylesheet"
     />
 
+    <!-- Noto Serif Tamil for devotional headings -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- ICONS -->
     <link
       rel="stylesheet"
@@ -86,13 +94,12 @@
     <title>Thiruvadhigai Natyanjali</title>
   </head>
   <body>
-    <header class="header">
-      <a href="#" class="logo">
-        <!-- <img class="logo" alt="Omnifood logo" src="img/omnifood-logo.png" /> -->
+    <header class="header" role="banner">
+      <a href="#" class="logo" aria-label="Thiruvadhigai Natyanjali home">
         Thiruvadhigai Natyanjali
       </a>
 
-      <nav class="main-nav">
+      <nav class="main-nav" role="navigation" aria-label="Main navigation">
         <ul class="main-nav-list">
           <li><a class="main-nav-link" href="#about">Our Story</a></li>
           <li>
@@ -103,13 +110,12 @@
             <a class="main-nav-link" href="#guidelines">Guidelines</a>
           </li>
           <li><a class="main-nav-link" href="#sign-up">Sign-up</a></li>
-          <!-- <li><a class="main-nav-link nav-cta" href="#cta">Try for free</a></li> -->
         </ul>
       </nav>
 
-      <button class="btn-mobile-nav">
-        <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
-        <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+      <button class="btn-mobile-nav" aria-label="Toggle mobile navigation" aria-expanded="false">
+        <ion-icon class="icon-mobile-nav" name="menu-outline" aria-hidden="true"></ion-icon>
+        <ion-icon class="icon-mobile-nav" name="close-outline" aria-hidden="true"></ion-icon>
       </button>
     </header>
     <div class="event-alert">
@@ -123,8 +129,8 @@
       </div>
     </div>
 
-    <main>
-      <section class="section-hero">
+    <main role="main" aria-label="Main content">
+      <section class="section-hero" aria-labelledby="hero-heading">
         <div class="hero">
           <div class="hero-text-box">
             <h1 class="hero-tamil-txt">
@@ -524,86 +530,86 @@
           <figure class="gallery-item">
             <img
               src="static/temple/temple2.jpeg"
-              alt="Photo of beautifully
-            arranged food"
+              alt="Panruti Thiruvathigai Virattaneshwara Temple exterior view"
+              loading="lazy"
             />
-            <!-- <figcaption>Caption</figcaption> -->
           </figure>
           <figure class="gallery-item">
             <img
               src="static/temple/gallery1.jpg"
-              alt="Photo of beautifully
-            arranged food"
+              alt="Temple architecture and devotees"
+              loading="lazy"
             />
           </figure>
           <figure class="gallery-item">
             <img
               src="static/customer-5.jpg"
-              alt="Photo of beautifully
-            arranged food"
+              alt="Bharatanatyam dancer performing at Natyanjali"
+              loading="lazy"
             />
           </figure>
           <figure class="gallery-item">
             <img
               src="static/temple/gallery3.jpg"
-              alt="Photo of beautifully
-            arranged food"
+              alt="Temple sanctum and devotees"
+              loading="lazy"
             />
           </figure>
           <figure class="gallery-item">
             <img
               src="static/temple1.JPG"
-              alt="Photo of beautifully
-            arranged food"
+              alt="Virattaneshwara Temple gopuram"
+              loading="lazy"
             />
           </figure>
           <figure class="gallery-item">
             <img
               src="static/customer-3.jpg"
-              alt="Photo of beautifully
-            arranged food"
+              alt="Classical dance performance at temple"
+              loading="lazy"
             />
           </figure>
           <figure class="gallery-item">
             <img
               src="static/temple/gallery7.jpg"
-              alt="Photo of beautifully
-            arranged food"
+              alt="Temple interior with traditional lamps"
+              loading="lazy"
             />
           </figure>
           <figure class="gallery-item">
             <img
               src="static/customer-4.jpg"
-              alt="Photo of beautifully
-            arranged food"
+              alt="Young dancer at Natyanjali festival"
+              loading="lazy"
             />
           </figure>
           <figure class="gallery-item">
             <img
               src="static/customer-1.jpg"
-              alt="Photo of beautifully
-            arranged food"
+              alt="Participant at Maha Shivratri celebration"
+              loading="lazy"
             />
           </figure>
           <figure class="gallery-item">
             <img
               src="static/woman_god.jpg"
-              alt="Photo of beautifully
-            arranged food"
+              alt="Temple deity adorned for festival"
+              loading="lazy"
             />
           </figure>
           <figure class="gallery-item">
             <img
               src="static/customer-2.jpg"
-              alt="Photo of beautifully
-            arranged food"
+              alt="Bharatanatyam performance at temple"
+              loading="lazy"
             />
           </figure>
           <figure class="gallery-item">
             <img
               src="static/temple/temple4.jpeg"
-              alt="Photo of beautifully
-            arranged food"
+              alt="Temple during Natyanjali festival"
+              loading="lazy"
+            />
             />
           </figure>
         </div>
@@ -857,6 +863,63 @@
                 times.
               </li>
             </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-location" id="location">
+        <div class="location-container container">
+          <span class="subheading">Temple Location</span>
+          <h2 class="heading-secondary">
+            Find us at Panruti Thiruvathigai Virattaneshwara Temple
+          </h2>
+          <div class="location-content">
+            <div class="location-details">
+              <div class="location-info">
+                <ion-icon class="location-icon" name="location-outline"></ion-icon>
+                <div>
+                  <h3 class="location-heading">Temple Address</h3>
+                  <p class="location-text">
+                    Panruti Thiruvathigai Virattaneshwara Temple<br />
+                    QH76+JW7, Thiruvathigai, Panruti<br />
+                    Tamil Nadu 607106
+                  </p>
+                </div>
+              </div>
+              <div class="location-info">
+                <ion-icon class="location-icon" name="car-outline"></ion-icon>
+                <div>
+                  <h3 class="location-heading">Distance from Major Cities</h3>
+                  <p class="location-text">
+                    20 km from Villupuram<br />
+                    24 km from Cuddalore<br />
+                    50 km from Pondicherry<br />
+                    160 km from Chennai
+                  </p>
+                </div>
+              </div>
+              <!-- <a 
+                href="https://www.google.com/maps/dir/?api=1&destination=QH76+JW7,Thiruvathigai,Panruti,Tamil+Nadu+607106" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="btn btn--full margin-right-sm"
+                aria-label="Get directions to temple on Google Maps"
+              >
+                Get Directions
+              </a> -->
+            </div>
+            <div class="map-container">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3905.7582939471823!2d79.56167931482105!3d11.764173591698774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a54b5c7e5f5c5c5%3A0x3c5c5c5c5c5c5c5c!2sThiruvathigai%2C%20Tamil%20Nadu%20607106!5e0!3m2!1sen!2sin!4v1704542400000!5m2!1sen!2sin&style=feature:all|element:all|saturation:-100|lightness:40&style=feature:road|element:geometry|lightness:100|visibility:simplified&style=feature:poi|element:all|visibility:off&style=feature:water|element:geometry|color:0x234e70"
+                width="600"
+                height="450"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Panruti Thiruvathigai Virattaneshwara Temple Location"
+              ></iframe>
+            </div>
           </div>
         </div>
       </section>

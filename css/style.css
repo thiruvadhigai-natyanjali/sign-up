@@ -8,6 +8,15 @@
   --registration_color: #efedee;
   --black: #222;
   --white: var(--white);
+  
+  /* South Indian Temple Color Palette */
+  --temple-gold: #D4AF37;
+  --kumkum-red: #C41E3A;
+  --sacred-saffron: #FF9933;
+  --peacock-teal: #008B8B;
+  --temple-copper: #B87333;
+  --divine-cream: #FFF8DC;
+  --sandalwood: #E8C8A0;
 }
 
 /**************************/
@@ -441,10 +450,74 @@
   display: grid;
   grid-template-columns: 55fr 45fr;
   align-items: center;
+  position: relative;
+}
+
+/* Rangoli-inspired decorative border */
+.section-testimonials::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--kumkum-red) 0px,
+    var(--kumkum-red) 10px,
+    var(--sacred-saffron) 10px,
+    var(--sacred-saffron) 20px,
+    var(--temple-gold) 20px,
+    var(--temple-gold) 30px,
+    var(--peacock-teal) 30px,
+    var(--peacock-teal) 40px
+  );
+}
+
+.section-testimonials::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--kumkum-red) 0px,
+    var(--kumkum-red) 10px,
+    var(--sacred-saffron) 10px,
+    var(--sacred-saffron) 20px,
+    var(--temple-gold) 20px,
+    var(--temple-gold) 30px,
+    var(--peacock-teal) 30px,
+    var(--peacock-teal) 40px
+  );
 }
 
 .testimonials-container {
   padding: 9.6rem;
+  position: relative;
+}
+
+/* Kolam corner patterns */
+.testimonials-container::before {
+  content: "●";
+  position: absolute;
+  top: 8rem;
+  left: 8rem;
+  font-size: 3rem;
+  color: var(--temple-gold);
+  opacity: 0.3;
+}
+
+.testimonials-container::after {
+  content: "●";
+  position: absolute;
+  bottom: 8rem;
+  right: 8rem;
+  font-size: 3rem;
+  color: var(--temple-gold);
+  opacity: 0.3;
 }
 
 .testimonials {
@@ -477,11 +550,47 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 1.6rem;
   padding: 1.6rem;
+  position: relative;
+}
+
+/* Temple-inspired gallery frame */
+.gallery::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 3px solid var(--temple-gold);
+  border-radius: 8px;
+  opacity: 0.3;
+  pointer-events: none;
 }
 
 .gallery-item {
   overflow: hidden;
   max-height: 215px;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s;
+}
+
+/* Golden border on hover */
+.gallery-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--temple-gold);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+
+.gallery-item:hover::after {
+  opacity: 1;
+}
+
+.gallery-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(212, 175, 55, 0.3);
 }
 
 .gallery-item img {
@@ -502,6 +611,52 @@
 .section-pricing {
   padding: 9.6rem 0;
   background-color: #fff;
+  position: relative;
+}
+
+/* Decorative section dividers with temple motifs */
+.section-about::after,
+.section-how::after,
+.section-pricing::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 60px;
+  margin: 4.8rem auto 0;
+  background-image: radial-gradient(
+    circle at center,
+    var(--temple-gold) 0%,
+    var(--sacred-saffron) 50%,
+    transparent 70%
+  );
+  opacity: 0.15;
+}
+
+/* Temple gopuram-inspired borders for key sections */
+.section-about,
+.section-how,
+.section-pricing,
+.section-procedure,
+.section-guidelines {
+  position: relative;
+}
+
+.section-about::before,
+.section-procedure::before,
+.section-guidelines::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--temple-gold),
+    transparent
+  );
 }
 
 .section-members {
@@ -771,6 +926,139 @@
   margin-bottom: 20px;
   margin-left: 20px;
   line-height: 1.3;
+}
+
+/**************************/
+/* LOCATION SECTION */
+/**************************/
+
+.section-location {
+  padding: 9.6rem 0;
+  background: linear-gradient(135deg, var(--divine-cream) 0%, var(--sandalwood) 100%);
+  position: relative;
+}
+
+.section-location::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    var(--kumkum-red),
+    var(--sacred-saffron),
+    var(--temple-gold),
+    var(--peacock-teal)
+  );
+}
+
+.location-container {
+  padding: 0 3.2rem;
+}
+
+.location-container .subheading {
+  color: var(--kumkum-red);
+}
+
+.location-container .heading-secondary {
+  color: var(--primary_color);
+  margin-bottom: 4.8rem;
+}
+
+.location-content {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4.8rem;
+  align-items: start;
+}
+
+.location-details {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+.location-info {
+  display: flex;
+  gap: 2.4rem;
+  align-items: flex-start;
+  padding: 2.4rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid var(--temple-gold);
+  transition: all 0.3s;
+}
+
+.location-info:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.2);
+}
+
+.location-icon {
+  font-size: 3.2rem;
+  color: var(--temple-gold);
+  flex-shrink: 0;
+}
+
+.location-heading {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--primary_color);
+  margin-bottom: 0.8rem;
+  font-family: "Noto Serif Tamil", "Tiro Tamil", serif;
+}
+
+.location-text {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: var(--forth_color);
+}
+
+.map-container {
+  border-radius: 1.6rem;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border: 3px solid var(--temple-gold);
+  position: relative;
+}
+
+.map-container::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    45deg,
+    var(--kumkum-red),
+    var(--sacred-saffron),
+    var(--temple-gold),
+    var(--peacock-teal)
+  );
+  border-radius: 1.6rem;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.map-container:hover::before {
+  opacity: 0.3;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 450px;
+  display: block;
+  filter: sepia(0.15) saturate(0.85);
+  transition: filter 0.3s;
+}
+
+.map-container:hover iframe {
+  filter: sepia(0) saturate(1);
 }
 
 /**************************/

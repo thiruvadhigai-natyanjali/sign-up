@@ -196,6 +196,15 @@ body {
   text-transform: uppercase;
   margin-bottom: 1.6rem;
   letter-spacing: 0.75px;
+  font-family: "Noto Serif Tamil", "Tiro Tamil", serif;
+}
+
+/* Tamil text styling */
+.tamil-text,
+[lang="ta"] {
+  font-family: "Noto Serif Tamil", "Tiro Tamil", serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .btn,
@@ -299,9 +308,8 @@ body {
 
 *:focus {
   outline: none;
-  /* outline: 4px dotted #e67e22; */
-  /* outline-offset: 8px; */
-  box-shadow: 0 0 0 0.8rem rgba(230, 125, 34, 0.5);
+  /* Temple-inspired golden glow */
+  box-shadow: 0 0 0 0.8rem rgba(212, 175, 55, 0.5);
 }
 
 /* HELPER/SETTINGS CLASSES */

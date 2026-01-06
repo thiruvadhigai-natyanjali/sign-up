@@ -1,4 +1,4 @@
-// CONFETTI
+// FLOATING LOTUS PETALS - Temple-themed animation
 
 document.addEventListener("DOMContentLoaded", function () {
   // Globals
@@ -9,63 +9,42 @@ document.addEventListener("DOMContentLoaded", function () {
     PI2 = PI * 2,
     timer = undefined,
     frame = undefined,
-    confetti = [];
+    petals = [];
 
-  var particles = 10,
-    spread = 40,
-    sizeMin = 3,
-    sizeMax = 12 - sizeMin,
+  var particles = 8, // Reduced for subtlety
+    spread = 60, // More spread out
+    sizeMin = 8, // Larger petals
+    sizeMax = 16 - sizeMin,
     eccentricity = 10,
-    deviation = 100,
-    dxThetaMin = -0.1,
+    deviation = 80,
+    dxThetaMin = -0.05, // Slower horizontal movement
     dxThetaMax = -dxThetaMin - dxThetaMin,
-    dyMin = 0.13,
-    dyMax = 0.18,
-    dThetaMin = 0.4,
-    dThetaMax = 0.7 - dThetaMin;
+    dyMin = 0.08, // Slower fall
+    dyMax = 0.12,
+    dThetaMin = 0.2, // Gentler rotation
+    dThetaMax = 0.4 - dThetaMin;
 
-  var colorThemes = [
+  // Temple-inspired petal colors: jasmine white, lotus pink, marigold orange
+  var petalColors = [
     function () {
-      return color(
-        (200 * random()) | 0,
-        (200 * random()) | 0,
-        (200 * random()) | 0
-      );
+      return "rgba(255, 248, 240, 0.9)"; // Jasmine white
     },
     function () {
-      var black = (200 * random()) | 0;
-      return color(200, black, black);
+      return "rgba(255, 182, 193, 0.85)"; // Lotus pink
     },
     function () {
-      var black = (200 * random()) | 0;
-      return color(black, 200, black);
+      return "rgba(255, 153, 51, 0.9)"; // Marigold orange
     },
     function () {
-      var black = (200 * random()) | 0;
-      return color(black, black, 200);
+      return "rgba(255, 228, 196, 0.85)"; // Pale peach
     },
     function () {
-      return color(200, 100, (200 * random()) | 0);
-    },
-    function () {
-      return color((200 * random()) | 0, 200, 200);
-    },
-    function () {
-      var black = (256 * random()) | 0;
-      return color(black, black, black);
-    },
-    function () {
-      return colorThemes[random() < 0.5 ? 1 : 2]();
-    },
-    function () {
-      return colorThemes[random() < 0.5 ? 3 : 5]();
-    },
-    function () {
-      return colorThemes[random() < 0.5 ? 2 : 4]();
+      return "rgba(255, 240, 245, 0.9)"; // Soft white
     },
   ];
-  function color(r, g, b) {
-    return "rgb(" + r + "," + g + "," + b + ")";
+
+  function color(colorFunc) {
+    return colorFunc();
   }
 
   // Cosine interpolation
@@ -77,8 +56,6 @@ document.addEventListener("DOMContentLoaded", function () {
   var radius = 1 / eccentricity,
     radius2 = radius + radius;
   function createPoisson() {
-    // domain is the set of points which are still available to pick from
-    // D = union{ [d_i, d_i+1] | i is even }
     var domain = [radius, 1 - radius],
       measure = 1 - radius2,
       spline = [0, 1];
@@ -92,7 +69,6 @@ document.addEventListener("DOMContentLoaded", function () {
         c,
         d;
 
-      // Find where dart lies
       for (i = 0, l = domain.length, measure = 0; i < l; i += 2) {
         (a = domain[i]), (b = domain[i + 1]), (interval = b - a);
         if (dart < measure + interval) {
@@ -103,24 +79,16 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       (c = dart - radius), (d = dart + radius);
 
-      // Update the domain
       for (i = domain.length - 1; i > 0; i -= 2) {
         (l = i - 1), (a = domain[l]), (b = domain[i]);
-        // c---d          c---d  Do nothing
-        //   c-----d  c-----d    Move interior
-        //   c--------------d    Delete interval
-        //         c--d          Split interval
-        //       a------b
         if (a >= c && a < d)
-          if (b > d) domain[l] = d; // Move interior (Left case)
+          if (b > d) domain[l] = d;
           else domain.splice(l, 2);
-        // Delete interval
         else if (a < c && b > c)
-          if (b <= d) domain[i] = c; // Move interior (Right case)
-          else domain.splice(i, 0, c, d); // Split interval
+          if (b <= d) domain[i] = c;
+          else domain.splice(i, 0, c, d);
       }
 
-      // Re-measure the domain
       for (i = 0, l = domain.length, measure = 0; i < l; i += 2)
         measure += domain[i + 1] - domain[i];
     }
@@ -137,9 +105,10 @@ document.addEventListener("DOMContentLoaded", function () {
   container.style.height = "0";
   container.style.overflow = "visible";
   container.style.zIndex = "9999";
+  container.style.pointerEvents = "none";
 
-  // Confetto constructor
-  function Confetto(theme) {
+  // Petal constructor
+  function Petal(theme) {
     this.frame = 0;
     this.outer = document.createElement("div");
     this.inner = document.createElement("div");
@@ -153,6 +122,8 @@ document.addEventListener("DOMContentLoaded", function () {
     innerStyle.width = "100%";
     innerStyle.height = "100%";
     innerStyle.backgroundColor = theme();
+    innerStyle.borderRadius = "50% 0 50% 0"; // Petal shape
+    innerStyle.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.1)";
 
     outerStyle.perspective = "50px";
     outerStyle.transform = "rotate(" + 360 * random() + "deg)";
@@ -182,7 +153,6 @@ document.addEventListener("DOMContentLoaded", function () {
       this.y += this.dy * delta;
       this.theta += this.dTheta * delta;
 
-      // Compute spline and convert to polar
       var phi = (this.frame % 7777) / 7777,
         i = 0,
         j = 1;
@@ -201,50 +171,47 @@ document.addEventListener("DOMContentLoaded", function () {
     };
   }
 
-  function poof() {
+  function bloom() {
     if (!frame) {
-      // Append the container
       document.body.appendChild(container);
 
-      // Add confetti
-      var theme = colorThemes[0],
-        count = 0;
-      (function addConfetto() {
-        var confetto = new Confetto(theme);
-        confetti.push(confetto);
-        container.appendChild(confetto.outer);
-        timer = setTimeout(addConfetto, spread * random());
+      var theme = petalColors[Math.floor(random() * petalColors.length)];
+      (function addPetal() {
+        var petal = new Petal(
+          petalColors[Math.floor(random() * petalColors.length)]
+        );
+        petals.push(petal);
+        container.appendChild(petal.outer);
+        timer = setTimeout(addPetal, spread * random());
       })(0);
 
-      // Start the loop
       var prev = undefined;
       requestAnimationFrame(function loop(timestamp) {
         var delta = prev ? timestamp - prev : 0;
         prev = timestamp;
         var height = window.innerHeight;
 
-        for (var i = confetti.length - 1; i >= 0; --i) {
-          if (confetti[i].update(height, delta)) {
-            container.removeChild(confetti[i].outer);
-            confetti.splice(i, 1);
+        for (var i = petals.length - 1; i >= 0; --i) {
+          if (petals[i].update(height, delta)) {
+            container.removeChild(petals[i].outer);
+            petals.splice(i, 1);
           }
         }
 
-        if (timer || confetti.length)
+        if (timer || petals.length)
           return (frame = requestAnimationFrame(loop));
 
-        // Cleanup
         document.body.removeChild(container);
         frame = undefined;
       });
     }
   }
 
-  var confettiDuration = 5000; // 5 seconds
+  var petalDuration = 3000; // 3 seconds - gentle and respectful
   setTimeout(function () {
     clearTimeout(timer);
     timer = undefined;
-  }, confettiDuration);
+  }, petalDuration);
 
-  poof();
+  bloom();
 });

@@ -14,7 +14,9 @@ const btnNavEl = document.querySelector(".btn-mobile-nav");
 const headerEl = document.querySelector(".header");
 
 btnNavEl.addEventListener("click", function () {
-  headerEl.classList.toggle("nav-open");
+  const isOpen = headerEl.classList.toggle("nav-open");
+  // Update ARIA attribute for accessibility
+  btnNavEl.setAttribute("aria-expanded", isOpen);
 });
 
 ///////////////////////////////////////////////////////////
@@ -166,6 +168,65 @@ btn.addEventListener('click', function(e) {
   e.preventDefault();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+
+///////////////////////////////////////////////////////////
+// Bharatanatyam-inspired hero animations
+
+// Fade in Tamil quote on scroll
+const heroTextBox = document.querySelector('.hero-text-box');
+const heroObserver = new IntersectionObserver(
+  function(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  },
+  {
+    root: null,
+    threshold: 0.1,
+    rootMargin: '0px'
+  }
+);
+
+if (heroTextBox) {
+  heroTextBox.style.opacity = '0';
+  heroTextBox.style.transform = 'translateY(20px)';
+  heroTextBox.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+  heroObserver.observe(heroTextBox);
+}
+
+// Gentle sway animation for hero image (like Bharatanatyam mudra)
+const heroImg = document.querySelector('.hero-img-box');
+if (heroImg) {
+  heroImg.style.animation = 'gentle-sway 4s ease-in-out infinite';
+}
+
+// Add keyframe animation for gentle sway
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes gentle-sway {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-10px) rotate(1deg);
+    }
+  }
+  
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`;
+document.head.appendChild(style);
 
 
 
