@@ -680,7 +680,7 @@
 }
 
 .section-lastyear {
-  --childs: 5;
+  --childs: 6;
   width: 100%;
   height: 100%; /* Adjust as needed to fit the viewport */
   display: flex;
@@ -725,9 +725,13 @@
   background-image: url("https://thiruvadhigai-natyanjali.github.io/sign-up/static/2025/chief-guest3.jpg");
 }
 
-/* .section-lastyear .box-5 {
-  background-image: url("https://a-static.besthdwallpaper.com/tom-clancy-s-ghost-recon-wildlands-wallpaper-2800x2100-2655_28.jpg");
-} */
+.section-lastyear .box-5 {
+  background-image: url("https://thiruvadhigai-natyanjali.github.io/sign-up/static/2026/2025-1.jpeg");
+}
+
+.section-lastyear .box-6 {
+  background-image: url("https://thiruvadhigai-natyanjali.github.io/sign-up/static/2026/2025-2.jpeg");
+}
 
 /* Responsive Layout */
 @media screen and (max-width: 1200px) {
