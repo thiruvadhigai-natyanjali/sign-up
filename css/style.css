@@ -8,15 +8,15 @@
   --registration_color: #efedee;
   --black: #222;
   --white: var(--white);
-  
+
   /* South Indian Temple Color Palette */
-  --temple-gold: #D4AF37;
-  --kumkum-red: #C41E3A;
-  --sacred-saffron: #FF9933;
-  --peacock-teal: #008B8B;
-  --temple-copper: #B87333;
-  --divine-cream: #FFF8DC;
-  --sandalwood: #E8C8A0;
+  --temple-gold: #d4af37;
+  --kumkum-red: #c41e3a;
+  --sacred-saffron: #ff9933;
+  --peacock-teal: #008b8b;
+  --temple-copper: #b87333;
+  --divine-cream: #fff8dc;
+  --sandalwood: #e8c8a0;
 }
 
 /**************************/
@@ -30,7 +30,7 @@
   background-color: var(--primary_color);
 
   /* Because we want header to be sticky later */
-  height: 9.6rem;
+  height: 7.6rem;
   padding: 0 4.8rem;
   position: relative;
   border-bottom: 1px solid var(--secondary_color);
@@ -56,6 +56,7 @@
   display: flex;
   align-items: center;
   gap: 4.8rem;
+  margin-block-end: 0;
 }
 
 .main-nav-link:link,
@@ -64,7 +65,7 @@
   text-decoration: none;
   color: var(--secondary_color);
   font-weight: 500;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   transition: all 0.3s;
 }
 
@@ -142,8 +143,13 @@
   padding-block: 2rem;
   padding-block-start: 4rem;
   font-size: 1.8rem;
-  margin-top: -3rem;
+  margin-top: -2.5rem;
   z-index: -1;
+  background-color: var(--sacred-saffron);
+  color: var(--forth_color);
+  border: none;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
   line-height: 1.4;
 }
 
@@ -154,6 +160,42 @@
 .section-hero {
   background-color: var(--primary_color);
   padding: 4.8rem 0 9.6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Nataraja watermark background */
+/* .section-hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background-image: url('https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?w=800');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.08;
+  z-index: 0;
+  filter: brightness(1.2);
+} */
+
+.section-hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  height: 300px;
+  background-image: url("https://images.unsplash.com/photo-1604868385055-69c3e0d5e187?w=400");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.05;
+  z-index: 0;
+  border-radius: 50%;
+  filter: blur(2px);
 }
 
 .hero {
@@ -164,6 +206,8 @@
   grid-template-columns: 1fr 1fr;
   gap: 9.6rem;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-description {
@@ -221,13 +265,191 @@
 }
 
 /**************************/
+/* PAMPHLET SHOWCASE SECTION */
+/**************************/
+
+.section-pamphlet {
+  padding: 9.6rem 0;
+  background: linear-gradient(
+    45deg,
+    var(--forth_color) 0%,
+    /* var(--temple-gold) 110% */
+    #cf711f9a 110%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+/* Trishul watermark for pamphlet section */
+.section-pamphlet::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    45deg,
+    var(--kumkum-red),
+    var(--sacred-saffron),
+    var(--temple-gold),
+    var(--peacock-teal)
+  );
+  border-radius: 1.6rem;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.pamphlet-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6.4rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.pamphlet-content {
+  color: var(--divine-cream);
+}
+
+.pamphlet-content .subheading {
+  color: var(--temple-gold);
+  font-size: 1.8rem;
+}
+
+.pamphlet-heading {
+  color: var(--secondary_color);
+  margin-bottom: 2.4rem;
+  font-family: "Noto Serif Tamil", "Tiro Tamil", serif;
+  font-size: 3.6rem;
+  line-height: 1.2;
+}
+
+.pamphlet-description {
+  font-size: 1.8rem;
+  line-height: 1.8;
+  margin-bottom: 3.2rem;
+  color: var(--divine-cream);
+  text-align: justify;
+}
+
+.pamphlet-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  margin-bottom: 3.2rem;
+}
+
+.pamphlet-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: 1.8rem;
+  color: var(--temple-gold);
+  font-weight: 500;
+}
+
+.pamphlet-icon {
+  font-size: 2.4rem;
+  color: var(--sacred-saffron);
+}
+
+.pamphlet-image-container {
+  perspective: 1000px;
+}
+
+.pamphlet-frame {
+  position: relative;
+  padding: 2rem;
+  background: linear-gradient(
+    135deg,
+    var(--temple-gold),
+    var(--temple-copper),
+    var(--temple-gold)
+  );
+  border-radius: 1.6rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4),
+    inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  transform: rotateY(-5deg);
+  transition: all 0.4s ease;
+}
+
+.pamphlet-frame:hover {
+  transform: rotateY(0deg) translateY(-8px);
+  box-shadow: 0 30px 80px rgba(212, 175, 55, 0.4),
+    inset 0 2px 4px rgba(255, 255, 255, 0.4);
+}
+
+.pamphlet-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 1.2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s;
+}
+
+.pamphlet-frame:hover .pamphlet-image {
+  transform: scale(1.02);
+}
+
+/* Decorative corner elements */
+.pamphlet-frame::before,
+.pamphlet-frame::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--sacred-saffron);
+  opacity: 0.6;
+}
+
+.pamphlet-frame::before {
+  top: 10px;
+  left: 10px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.pamphlet-frame::after {
+  bottom: 10px;
+  right: 10px;
+  border-left: none;
+  border-top: none;
+}
+
+/**************************/
 /* ABOUT */
 /**************************/
 
 .section-about {
   padding: 9.6rem 0;
-  /* padding-bottom: 0; */
   background-color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shiva meditation silhouette watermark */
+.section-about > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.section-about::after {
+  content: "";
+  position: absolute;
+  top: 10%;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background-image: url("https://images.unsplash.com/photo-1609948043609-32564c9d9e9d?w=500");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.04;
+  z-index: 0;
+  filter: grayscale(100%) brightness(1.3);
 }
 
 .cls-about-description {
@@ -294,6 +516,29 @@
 .section-how {
   padding: 9.6rem 0;
   background-color: var(--primary_lt_color);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Rangoli pattern watermark */
+.section-how::before {
+  content: "";
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  width: 350px;
+  height: 350px;
+  background-image: url("https://images.unsplash.com/photo-1604999333679-b86d54738315?w=500");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.06;
+  z-index: 0;
+}
+
+.section-how > .container {
+  position: relative;
+  z-index: 1;
 }
 
 .step-number {
@@ -472,6 +717,7 @@
     var(--peacock-teal) 30px,
     var(--peacock-teal) 40px
   );
+  z-index: 2;
 }
 
 .section-testimonials::after {
@@ -511,13 +757,18 @@
 }
 
 .testimonials-container::after {
-  content: "●";
+  content: "";
   position: absolute;
-  bottom: 8rem;
-  right: 8rem;
-  font-size: 3rem;
-  color: var(--temple-gold);
-  opacity: 0.3;
+  top: 20%;
+  left: 2%;
+  width: 300px;
+  height: 400px;
+  background-image: url("https://images.unsplash.com/photo-1582721677728-9e883ff2097d?w=400");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.03;
+  z-index: 0;
+  filter: grayscale(100%);
 }
 
 .testimonials {
@@ -934,7 +1185,11 @@
 
 .section-location {
   padding: 9.6rem 0;
-  background: linear-gradient(135deg, var(--divine-cream) 0%, var(--sandalwood) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--divine-cream) 0%,
+    var(--sandalwood) 100%
+  );
   position: relative;
 }
 
@@ -1068,10 +1323,32 @@
 .section-registration {
   padding: 9.6rem 0;
   background-color: var(--primary_color);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dancing Nataraja watermark */
+.section-registration::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -50px;
+  transform: translateY(-50%);
+  width: 500px;
+  height: 500px;
+  background-image: url("https://images.unsplash.com/photo-1606761568499-6d2451b23c66?w=600");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.06;
+  z-index: 0;
+  filter: brightness(1.3);
 }
 
 .registration-container {
   padding: 0 3.2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .registration-container iframe {

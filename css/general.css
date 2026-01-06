@@ -230,8 +230,8 @@ body {
 
 .btn--full:link,
 .btn--full:visited {
-  background-color: var(--tertiary_color);
-  color: #fff;
+  background-color: var(--sacred-saffron);
+  color: #444;
 }
 
 .btn--full:hover,
